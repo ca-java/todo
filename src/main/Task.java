@@ -39,9 +39,10 @@ public class Task {
     @Override
     public String toString() {
         String statusasTekstoEilute = "aktyvi";
+        if (aprasas.isEmpty()) aprasas = pavadinimas;
         if (uzduotiesStatusas) statusasTekstoEilute = "baigta";
         return String.format("Užduotis %s: %s. Statusas: %s, prioritetas: %d, užduotis sukurta: %s",
-                pavadinimas, aprasas, statusasTekstoEilute, prioritetas,
+                pavadinimas, aprasas.toLowerCase(), statusasTekstoEilute, prioritetas,
                 new SimpleDateFormat("yyyy-MM-dd").format(data));
     }
 }

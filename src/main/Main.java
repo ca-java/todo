@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         var task1 = new Task("Paskambinti mamai", "Paskambinti, nes noriu susitarti");
         var task2 = new Task("Paskambinti tėčiui", "Paskambinti, nes noriu pasimatyti");
-        var task3 = new Task("Paskambinti sesei", "Paskambinti, nes noriu sužinoti");
+        var task3 = new Task("Paskambinti sesei");
 
         var manager = new TaskManager();
 
