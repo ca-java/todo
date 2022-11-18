@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaskManager {
@@ -14,18 +15,15 @@ public class TaskManager {
     9. Rūšiuoti užduotis pagal prioriteto tvarką
      */
 
-    private List<Task> tasks;
+    private List<Task> tasks = new ArrayList<>();
 
-    public TaskManager(List<Task> tasks){
-        this.tasks = tasks;
-    }
 
     public void sort(){
         // rikiavimo logika
     }
 
     public List<Task> tasks(){
-        return tasks;
+        return new ArrayList<>(tasks);
     }
 
     public void add(Task task) {
