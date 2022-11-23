@@ -1,3 +1,4 @@
+package main;
 public class Task {
 
     private int priority = 0;

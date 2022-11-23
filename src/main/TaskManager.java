@@ -1,3 +1,5 @@
+package main;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaskManager {
@@ -16,8 +18,8 @@ public class TaskManager {
 
     private List<Task> tasks;
 
-    public TaskManager(List<Task> tasks){
-        this.tasks = tasks;
+    public TaskManager(){
+       // this.tasks = tasks;
     }
 
     public void sort(){
@@ -25,7 +27,10 @@ public class TaskManager {
     }
 
     public List<Task> tasks(){
-        return tasks;
+        // return new ArrayList<>(tasks);
+        ArrayList<Task> list = new ArrayList<>();
+        list.addAll(tasks);
+        return list;
     }
 
     public void add(Task task) {
