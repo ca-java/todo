@@ -5,8 +5,8 @@ public class TaskManager {
 
     /*
     1. + Peržiūrėti visas esamas užduotis (tasks)
-    2. Pridėti naują užduotį
-    3. Ištrinti pasirinktą užduotį
+    2. + Pridėti naują užduotį
+    3. + Ištrinti pasirinktą užduotį
     4. Redaguoti pasirinktą užduotį
     5. Pažymėti užduotį kaip atliktą
     6. Išvesti į ekraną užduotis, kurios nėra atliktos
@@ -35,9 +35,13 @@ public class TaskManager {
         tasks.remove(task);
     }
 
-    public void update(Task newTask) {
-        Task oldTask = tasks.get(tasks.indexOf(newTask));
-        oldTask.update(newTask);
+    public boolean update(Task oldTask, Task newTask) {
+        if (tasks.contains(oldTask)) {
+            tasks.remove(oldTask);
+            tasks.add(newTask);
+            return true;
+        } else
+            return false;
     }
 
     public List<Task> getcompletedTasks(){
