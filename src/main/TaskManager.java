@@ -41,9 +41,17 @@ public class TaskManager {
         tasks.remove(task);
     }
 
-    public void update(Task newTask) {
-        Task oldTask = tasks.get(tasks.indexOf(newTask));
-        oldTask.update(newTask);
+    public boolean update(Task oldTask, Task newTask) {
+        // 1. return update status
+        // 2.
+
+        if (tasks.contains(oldTask)) {
+            tasks.remove(oldTask);
+            tasks.add(newTask);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public List<Task> getcompletedTasks(){
