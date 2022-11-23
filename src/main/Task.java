@@ -1,6 +1,8 @@
 public class Task {
 
     private int priority = 0;
+    private final String name;
+    private final String description;
     /*
     Užduoties (task) turimos savybės:
     1. Pavadinimas
@@ -11,11 +13,13 @@ public class Task {
     5. Data
      */
 
-    public Task(){
+    public Task(String name){
+        this(name, "");
     }
 
-    public void update(Task newTask) {
-        // update task
+    public Task(String name, String description){
+        this.name = name;
+        this.description = description;
     }
 
     public void setCompleted() {
@@ -24,5 +28,10 @@ public class Task {
 
     public boolean isCompleted() {
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("name: %s, description: %s", name, description);
     }
 }
