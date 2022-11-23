@@ -1,5 +1,5 @@
 # todo
-Learnign git project for CA students
+Learning git project for CA students
 
 Papildyti programą todo, kuri galėtų:
 1. Peržiūrėti visas esamas užduotis (tasks)
