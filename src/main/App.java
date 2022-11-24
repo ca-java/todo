@@ -21,10 +21,14 @@ public class App {
 
         // print all tasks
         print(manager.tasks());
+
+        // get completed tasks
+        t3.setCompleted();
+        print(manager.getcompletedTasks());
     }
 
     private static void print(List<Task> tasks) {
-        System.out.println("---- Printing all tasks ----");
+        System.out.println("---- Printing tasks ----");
         for(Task task: tasks)
             System.out.println(task);
     }

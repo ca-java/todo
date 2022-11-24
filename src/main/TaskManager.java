@@ -7,9 +7,9 @@ public class TaskManager {
     1. + Peržiūrėti visas esamas užduotis (tasks)
     2. + Pridėti naują užduotį
     3. + Ištrinti pasirinktą užduotį
-    4. Redaguoti pasirinktą užduotį
-    5. Pažymėti užduotį kaip atliktą
-    6. Išvesti į ekraną užduotis, kurios nėra atliktos
+    4. + Redaguoti pasirinktą užduotį
+    5. + Pažymėti užduotį kaip atliktą
+    6. + Išvesti į ekraną užduotis, kurios nėra atliktos
     7. Išvesti į ekraną visas užduotis, kurios jau yra atliktos
     8. Pašalinti visas atliktas užduotis
     9. Rūšiuoti užduotis pagal prioriteto tvarką
@@ -46,7 +46,12 @@ public class TaskManager {
 
     public List<Task> getcompletedTasks(){
         // return completed tasks
-        return null;
+        List<Task> result = new ArrayList<>();
+        for (Task task: tasks) {
+            if (task.isCompleted())
+                result.add(task);
+        }
+        return result;
     }
 
     public List<Task> getActiveTasks(){
