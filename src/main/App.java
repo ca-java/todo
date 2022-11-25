@@ -1,4 +1,7 @@
+package main;
+
 import java.util.List;
+
 
 public class App {
 
@@ -14,22 +17,27 @@ public class App {
         manager.add(t2);
 
         // print all tasks
-        print(manager.tasks());
+        print(manager.tasks(), "All");
 
         // update the task
         manager.update(t1, t3);
 
         // print all tasks
-        print(manager.tasks());
+        print(manager.tasks(), "All");
 
         // get completed tasks
         t3.setCompleted();
-        print(manager.getcompletedTasks());
+        print(manager.getCompletedTasks(), "Completed");
+
+        print(manager.getActiveTasks(), "Active");
+
+
     }
 
-    private static void print(List<Task> tasks) {
-        System.out.println("---- Printing tasks ----");
+    private static void print(List<Task> tasks, String printCategory) {
+        System.out.printf("---- %s tasks readout ----%n", printCategory);
         for(Task task: tasks)
             System.out.println(task);
+        System.out.printf("---- End of %s tasks readout ----%n%n", printCategory);
     }
 }
