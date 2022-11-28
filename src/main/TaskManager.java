@@ -50,7 +50,7 @@ public class TaskManager {
         // return completed tasks
         List<Task> result = new ArrayList<>();
         for (Task task: tasks) {
-            if (!task.isCompleted())
+            if (task.isCompleted())
                 result.add(task);
         }
         return result;
@@ -60,7 +60,7 @@ public class TaskManager {
         // return incomplete tasks
         List<Task> result = new ArrayList<>();
         for (Task task: tasks) {
-            if (task.isCompleted())
+            if (!task.isCompleted())
                 result.add(task);
         }
         return result;
