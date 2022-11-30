@@ -1,4 +1,4 @@
-package main;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class TaskManager {
     9. Rūšiuoti užduotis pagal prioriteto tvarką
      */
 
-    private final List<Task> tasks = new ArrayList<>();
+    private List<Task> tasks = new ArrayList<>();
 
     public List<Task> tasks(){
         ArrayList<Task> list = new ArrayList<>();
@@ -67,6 +67,13 @@ public class TaskManager {
     }
 
     public void removeAllCompleted(){
+        List<Task> newTasks = new ArrayList<>();
+        for (Task currentTask : tasks) {
+            if (!currentTask.isCompleted()) {
+                newTasks.add(currentTask);
+            }
+        }
+        tasks = newTasks;
         // remove all completed tasks
     }
 

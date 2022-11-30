@@ -1,4 +1,4 @@
-package main;
+
 
 import java.util.List;
 
@@ -30,6 +30,10 @@ public class App {
         print(manager.getCompletedTasks(), "Completed");
 
         print(manager.getActiveTasks(), "Active");
+
+        manager.removeAllCompleted();
+
+        print(manager.tasks(), "All");
 
 
     }
