@@ -6,7 +6,7 @@ import java.util.List;
 public class TaskManager {
 
     /*
-    1. + Peržiūrėti visas esamas užduotis (tasks)
+
     2. + Pridėti naują užduotį
     3. + Ištrinti pasirinktą užduotį
     4. + Redaguoti pasirinktą užduotį
