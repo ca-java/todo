@@ -1,9 +1,11 @@
+package main;
+
 public class Task {
 
     private int priority = 0;
     private final String name;
     private final String description;
-    private boolean activeStatus;
+    private boolean completionStatus;
     /*
     Užduoties (task) turimos savybės:
     1. Pavadinimas
@@ -21,15 +23,15 @@ public class Task {
     public Task(String name, String description){
         this.name = name;
         this.description = description;
-        this.activeStatus = true;
+        this.completionStatus = false;
     }
 
     public void setCompleted() {
-        this.activeStatus = false;
+        this.completionStatus = true;
     }
 
     public boolean isCompleted() {
-        return activeStatus;
+        return completionStatus;
     }
 
     @Override

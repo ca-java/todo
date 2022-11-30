@@ -1,3 +1,5 @@
+package main;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +11,8 @@ public class TaskManager {
     3. + Ištrinti pasirinktą užduotį
     4. + Redaguoti pasirinktą užduotį
     5. + Pažymėti užduotį kaip atliktą
-    6. + Išvesti į ekraną užduotis, kurios nėra atliktos
-    7. Išvesti į ekraną visas užduotis, kurios jau yra atliktos
+    6. Išvesti į ekraną užduotis, kurios nėra atliktos
+    7. + Išvesti į ekraną visas užduotis, kurios jau yra atliktos
     8. Pašalinti visas atliktas užduotis
     9. Rūšiuoti užduotis pagal prioriteto tvarką
      */
@@ -44,7 +46,7 @@ public class TaskManager {
             return false;
     }
 
-    public List<Task> getcompletedTasks(){
+    public List<Task> getCompletedTasks(){
         // return completed tasks
         List<Task> result = new ArrayList<>();
         for (Task task: tasks) {
@@ -55,8 +57,13 @@ public class TaskManager {
     }
 
     public List<Task> getActiveTasks(){
-        // return completed tasks
-        return null;
+        // return incomplete tasks
+        List<Task> result = new ArrayList<>();
+        for (Task task: tasks) {
+            if (!task.isCompleted())
+                result.add(task);
+        }
+        return result;
     }
 
     public void removeAllCompleted(){
