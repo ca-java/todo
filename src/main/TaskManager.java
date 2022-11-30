@@ -67,13 +67,14 @@ public class TaskManager {
     }
 
     public void removeAllCompleted(){
-        List<Task> newActiveTasks = new ArrayList<>();
+//        List<Task> newActiveTasks = new ArrayList<>();
         for (Task currentTask : tasks) {
-            if (!currentTask.isCompleted()) {
-                newActiveTasks.add(currentTask);
+            if (currentTask.isCompleted()) {
+                int currentIndex = tasks.indexOf(currentTask);
+                tasks.set(currentIndex, null);
             }
         }
-        tasks = newActiveTasks;
+        tasks.remove(null);
         // remove all completed tasks
     }
 
