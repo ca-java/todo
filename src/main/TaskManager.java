@@ -1,4 +1,3 @@
-package main;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,6 +67,7 @@ public class TaskManager {
 
     public void removeAllCompleted(){
         // remove all completed tasks
+        tasks.removeIf(Task::isCompleted);
     }
 
     public void checkCompleted(Task task){
