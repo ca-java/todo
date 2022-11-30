@@ -17,7 +17,7 @@ public class TaskManager {
     9. Rūšiuoti užduotis pagal prioriteto tvarką
      */
 
-    private List<Task> tasks = new ArrayList<>();
+    private final List<Task> tasks = new ArrayList<>();
 
     public List<Task> tasks(){
         ArrayList<Task> list = new ArrayList<>();
