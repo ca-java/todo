@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class TaskManager {
 
     /*
@@ -17,13 +18,41 @@ public class TaskManager {
 
     private final List<Task> tasks = new ArrayList<>();
 
-    public List<Task> tasks(){
+    public List<Task> tasks() {
         ArrayList<Task> list = new ArrayList<>();
         list.addAll(tasks);
         return list;
     }
 
-    public void sort(){
+    public List<Task> tasks(OrderType orderType) {
+
+        ArrayList<ArrayList<Task>> tasksPriority = new ArrayList<>(); //multidimensional list for 4 categories of priority
+        tasksPriority.add(new ArrayList<Task>());
+        tasksPriority.add(new ArrayList<Task>());
+        tasksPriority.add(new ArrayList<Task>());
+        tasksPriority.add(new ArrayList<Task>());
+
+        ArrayList<Task> list = new ArrayList<>();
+
+        for (Task currentTask : tasks) { // distributing active tasks into priority categories
+            if (!currentTask.isCompleted()) {
+                tasksPriority.get(currentTask.getPriority()).add(currentTask);
+            }
+        }
+
+        if (orderType == OrderType.ASC) { // fusing categories of priority into ascending list
+            for (int i = 0; i < 4; i++) {
+                list.addAll(tasksPriority.get(i));
+            }
+        } else {
+            for (int i = 3; i >= 0; i--) {
+                list.addAll(tasksPriority.get(i));
+            }
+        }
+        return list;
+    }
+
+    public void sort() {
         // rikiavimo logika
     }
 
@@ -44,43 +73,50 @@ public class TaskManager {
             return false;
     }
 
-    public List<Task> getCompletedTasks(){
+    public List<Task> getCompletedTasks() {
         // return completed tasks
         List<Task> result = new ArrayList<>();
-        for (Task task: tasks) {
+        for (Task task : tasks) {
             if (task.isCompleted())
                 result.add(task);
         }
         return result;
     }
 
-    public List<Task> getActiveTasks(){
+    public List<Task> getActiveTasks() {
         // return incomplete tasks
         List<Task> result = new ArrayList<>();
-        for (Task task: tasks) {
+        for (Task task : tasks) {
             if (!task.isCompleted())
                 result.add(task);
         }
         return result;
     }
 
-    public void removeAllCompleted(){
+    public void removeAllCompleted() {
         // remove all completed tasks
         List<Task> tasksToRemove = new ArrayList<>();
-        for (Task task: tasks){
+        for (Task task : tasks) {
             if (task.isCompleted())
                 tasksToRemove.add(task);
         }
         tasks.removeAll(tasksToRemove);
     }
 
-    public void checkCompleted(Task task){
+    public void checkCompleted(Task task) {
         // logika surandu task'a ir ji complete'inu
         tasks.get(tasks.indexOf(task)).setCompleted();
     }
 
-    public List<Task> order(){
+    public List<Task> order() {
+
         // rikiuojame pagal prioriteta
         return null;
     }
+
+    public enum OrderType {
+        ASC,
+        DESC;
+    }
+
 }
