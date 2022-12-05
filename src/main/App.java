@@ -8,9 +8,9 @@ public class App {
         Task t1 = new Task("Call Brother");
         Task t2 = new Task("Order Pizza 🍕");
         Task t3 = new Task("Call Mother");
-        Task t4 = new Task("Clean apartment");
-        Task t5 = new Task("Service", "Bring car to the service");
-        Task t6 = new Task("Shopping", "Gifts for christmas 🎄😨");
+        Task t4 = new Task("Clean apartment", "Urgently", 3);
+        Task t5 = new Task("Service", "Bring car to the service", 1);
+        Task t6 = new Task("Shopping", "Gifts for christmas 🎄😨", 2);
 
         manager.add(t1);
         manager.add(t2);
@@ -35,11 +35,17 @@ public class App {
         // print active tasks
         print(manager.getActiveTasks(), "Active");
 
+        print(manager.getSorted(SortOrder.ASC), "Sorted task in ascending order");
+
+        print(manager.getSorted(SortOrder.DESC), "Sorted task in descending order");
+
+
         t1.setCompleted();
         t2.setCompleted();
         t3.setCompleted();
         manager.removeAllCompleted();
         print(manager.tasks(), "All");
+
     }
 
     private static void print(List<Task> tasks, String printCategory) {

@@ -1,6 +1,6 @@
 public class Task {
 
-    private int priority = 0;
+    private int priority;
     private final String name;
     private final String description;
     private boolean completionStatus;
@@ -15,13 +15,14 @@ public class Task {
      */
 
     public Task(String name){
-        this(name, "");
+        this(name, "", 0);
     }
 
-    public Task(String name, String description){
+    public Task(String name, String description, int priority){
         this.name = name;
         this.description = description;
         this.completionStatus = false;
+        this.priority = priority;
     }
 
     public void setCompleted() {
@@ -30,6 +31,10 @@ public class Task {
 
     public boolean isCompleted() {
         return completionStatus;
+    }
+
+    public int getPriority() {
+        return priority;
     }
 
     @Override
