@@ -7,7 +7,6 @@ public class App {
         // add some tasks
         Task t1 = new Task.Builder("Call Brother").build();
         Task t2 = new Task.Builder("Order Pizza 🍕")
-                .priority(3)
                 .build();
         Task t3 = new Task.Builder("Call Mother")
                 .priority(4)
