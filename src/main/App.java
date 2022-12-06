@@ -1,4 +1,5 @@
 import java.util.List;
+
 public class App {
 
     public static void main(String[] args) {
@@ -38,15 +39,15 @@ public class App {
         print(manager.tasks(), "All");
 
         // set t3 completed and print inactive tasks
-         t3.setCompleted();
+        t3.setCompleted();
         print(manager.getCompletedTasks(), "Completed");
 
         // print active tasks
         print(manager.getActiveTasks(), "Active");
 
         //print sorted tasks
-        print(manager.sortASC(),"Sorted tasks in ascending order");
-        print(manager.sortDESC(),"Sorted in descending priority order");
+        print(manager.sortASC(), "Sorted tasks in ascending order");
+        print(manager.sortDESC(), "Sorted tasks in descending priority order");
 
         t1.setCompleted();
         t2.setCompleted();
@@ -57,7 +58,7 @@ public class App {
 
     private static void print(List<Task> tasks, String printCategory) {
         System.out.printf("---- %s tasks readout ----%n", printCategory);
-        for(Task task: tasks)
+        for (Task task : tasks)
             System.out.println(task);
         System.out.printf("---- End of %s tasks readout ----%n%n", printCategory);
 

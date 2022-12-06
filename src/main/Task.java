@@ -1,6 +1,6 @@
 public class Task {
 
-    protected final int priority;
+    private final int priority;
     private final String name;
     private final String description;
     private boolean completionStatus;
@@ -14,7 +14,7 @@ public class Task {
     5. Data
      */
 
-    private Task(String name,String description,int priority){
+    private Task(String name, String description, int priority) {
         this.name = name;
         this.description = description;
         this.priority = priority;
@@ -31,30 +31,36 @@ public class Task {
     @Override
     public String toString() {
 
-        return String.format("name: %s, description: %s, priority: %s", name, description,priority);
+        return String.format("name: %s, description: %s, priority: %s", name, description, priority);
+    }
+
+    public int getPriority() {
+        return priority;
     }
 
     public static class Builder {
         String name;
-        protected int priority;
-        protected String description;
+        private int priority;
+        private String description;
 
-        public Builder(String name){
+        public Builder(String name) {
             this.name = name;
         }
-        public Task build(){
-            return new Task(name,description,priority);
+
+        public Task build() {
+            return new Task(name, description, priority);
         }
-        public Builder priority(int priority){
+
+        public Builder priority(int priority) {
             this.priority = priority;
 
             return this;
         }
-        public Builder description(String description){
-            this.description =  description;
+
+        public Builder description(String description) {
+            this.description = description;
 
             return this;
         }
     }
-
 }
