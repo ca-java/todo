@@ -19,6 +19,13 @@ public class App {
         manager.add(t5);
         manager.add(t6);
 
+        manager.add(t1);
+        manager.add(t2);
+        manager.add(t3);
+        manager.add(t4);
+        manager.add(t5);
+        manager.add(t6);
+
         // print all tasks
         print(manager.tasks(), "All");
 
