@@ -24,24 +24,19 @@ public class TaskManager {
     }
 
     public List<Task> getSorted(SortOrder order) {
-        Task[] sortingList = tasks.toArray(new Task[tasks.size()]);
-        if (order == SortOrder.ASC) {
-            for (int i = 0; i < sortingList.length - 1; i++) {
-                for (int j = 0; j < sortingList.length - 1; j++) {
-                    Task comaprator1 = sortingList[j];
-                    Task comaprator2 = sortingList[j + 1];
+        Task[] sortingList = tasks.toArray(new Task[0]);
+        for (int i = 0; i < sortingList.length - 1; i++) {
+            for (int j = 0; j < sortingList.length - 1; j++) {
+                Task comaprator1 = sortingList[j];
+                Task comaprator2 = sortingList[j + 1];
+                if (order == SortOrder.ASC) {
                     if (comaprator1.getPriority() > comaprator2.getPriority()) {
                         Task temp = sortingList[j + 1];
                         sortingList[j + 1] = sortingList[j];
                         sortingList[j] = temp;
                     }
                 }
-            }
-        } else if (order == SortOrder.DESC) {
-            for (int i = 0; i < sortingList.length - 1; i++) {
-                for (int j = 0; j < sortingList.length - 1; j++) {
-                    Task comaprator1 = sortingList[j];
-                    Task comaprator2 = sortingList[j + 1];
+                if (order == SortOrder.DESC) {
                     if (comaprator1.getPriority() < comaprator2.getPriority()) {
                         Task temp = sortingList[j + 1];
                         sortingList[j + 1] = sortingList[j];
