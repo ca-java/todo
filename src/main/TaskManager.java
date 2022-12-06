@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class TaskManager {
 
@@ -21,13 +20,32 @@ public class TaskManager {
         ArrayList<Task> list = new ArrayList<>();
         list.addAll(tasks);
         return list;
+
     }
 
-    public void sort(){
-        // rikiavimo logika
+    public List<Task> sortASC() {
+        ArrayList<Task> list = new ArrayList<>();
+        for (Task task : tasks) {
+            if (!task.isCompleted())
+                list.add(task);
+        }
+
+        Collections.sort(list, new PriorityComparator());
+        return list;
+    }
+
+    public List<Task> sortDESC() {
+        ArrayList<Task> list = new ArrayList<>();
+        for (Task task : tasks) {
+            if (!task.isCompleted())
+                list.add(task);
+        }
+        Collections.sort(list, new PriorityComparator().reversed());
+        return list;
     }
 
     public void add(Task task) {
+
         tasks.add(task);
     }
 
@@ -79,8 +97,4 @@ public class TaskManager {
         tasks.get(tasks.indexOf(task)).setCompleted();
     }
 
-    public List<Task> order(){
-        // rikiuojame pagal prioriteta
-        return null;
-    }
 }
