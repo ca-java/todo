@@ -41,8 +41,8 @@ public class App {
 //        manager.removeAllCompleted();
 //        print(manager.tasks(), "All");
 
-        print(manager.tasks(TaskManager.OrderType.ASC), "Active in ascending priority order");
-        print(manager.tasks(TaskManager.OrderType.DESC), "Active in descending priority order");
+        print(manager.tasks(Task.OrderType.ASC), "Active in ascending priority order");
+        print(manager.tasks(Task.OrderType.DESC), "Active in descending priority order");
 
     }
 

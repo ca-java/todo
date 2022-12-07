@@ -108,11 +108,7 @@ public class TaskManager {
         tasks.get(tasks.indexOf(task)).setCompleted();
     }
 
-    public List<Task> order(){
 
-        // rikiuojame pagal prioriteta
-        return null;
-    }
 
 
 
