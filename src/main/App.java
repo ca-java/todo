@@ -3,31 +3,16 @@ import java.util.List;
 public class App {
 
     public static void main(String[] args) {
-        TaskManager manager = new TaskManager();
+        TaskManager manager = new TaskManager(new TaskDao());
 
         // add some tasks
-        Task t1 = new Task.Builder("Call Brother").build();
+        Task t1 = new Task.Builder("Call Brother")
+                .build();
         Task t2 = new Task.Builder("Order Pizza 🍕")
                 .build();
         Task t3 = new Task.Builder("Call Mother")
                 .priority(4)
                 .build();
-        Task t4 = new Task.Builder("Clean apartment")
-                .priority(3)
-                .build();
-        Task t5 = new Task.Builder("Service").description("Bring car to the service")
-                .priority(1)
-                .build();
-        Task t6 = new Task.Builder("Shopping").description("Gifts for christmas 🎄😨")
-                .priority(5)
-                .build();
-
-        manager.add(t1);
-        manager.add(t2);
-        manager.add(t3);
-        manager.add(t4);
-        manager.add(t5);
-        manager.add(t6);
 
         // print all tasks
         print(manager.tasks(), "All");
