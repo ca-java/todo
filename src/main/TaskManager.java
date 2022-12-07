@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
 
 public class TaskManager {
 
@@ -17,14 +17,22 @@ public class TaskManager {
 
     private final List<Task> tasks = new ArrayList<>();
 
-    public List<Task> tasks(){
+    public List<Task> tasks() {
         ArrayList<Task> list = new ArrayList<>();
         list.addAll(tasks);
         return list;
     }
 
-    public void sort(){
-        // rikiavimo logika
+    public List<Task> sortASC() {
+        //Sorted tasks in ascending priority order
+        Collections.sort(tasks, new PriorityComparator());
+        return tasks;
+    }
+
+    public List<Task> sortDESC() {
+        //Sorted tasks in descending priority order
+        Collections.sort(tasks, new PriorityComparator().reversed());
+        return tasks;
     }
 
     public void add(Task task) {
@@ -32,6 +40,7 @@ public class TaskManager {
     }
 
     public void remove(Task task) {
+
         tasks.remove(task);
     }
 
@@ -44,43 +53,38 @@ public class TaskManager {
             return false;
     }
 
-    public List<Task> getCompletedTasks(){
+    public List<Task> getCompletedTasks() {
         // return completed tasks
         List<Task> result = new ArrayList<>();
-        for (Task task: tasks) {
+        for (Task task : tasks) {
             if (task.isCompleted())
                 result.add(task);
         }
         return result;
     }
 
-    public List<Task> getActiveTasks(){
+    public List<Task> getActiveTasks() {
         // return incomplete tasks
         List<Task> result = new ArrayList<>();
-        for (Task task: tasks) {
+        for (Task task : tasks) {
             if (!task.isCompleted())
                 result.add(task);
         }
         return result;
     }
 
-    public void removeAllCompleted(){
+    public void removeAllCompleted() {
         // remove all completed tasks
         List<Task> tasksToRemove = new ArrayList<>();
-        for (Task task: tasks){
+        for (Task task : tasks) {
             if (task.isCompleted())
                 tasksToRemove.add(task);
         }
         tasks.removeAll(tasksToRemove);
     }
 
-    public void checkCompleted(Task task){
+    public void checkCompleted(Task task) {
         // logika surandu task'a ir ji complete'inu
         tasks.get(tasks.indexOf(task)).setCompleted();
-    }
-
-    public List<Task> order(){
-        // rikiuojame pagal prioriteta
-        return null;
     }
 }

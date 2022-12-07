@@ -1,16 +1,26 @@
 import java.util.List;
+
 public class App {
 
     public static void main(String[] args) {
         TaskManager manager = new TaskManager();
 
         // add some tasks
-        Task t1 = new Task("Call Brother");
-        Task t2 = new Task("Order Pizza 🍕");
-        Task t3 = new Task("Call Mother");
-        Task t4 = new Task("Clean apartment");
-        Task t5 = new Task("Service", "Bring car to the service");
-        Task t6 = new Task("Shopping", "Gifts for christmas 🎄😨");
+        Task t1 = new Task.Builder("Call Brother").build();
+        Task t2 = new Task.Builder("Order Pizza 🍕")
+                .build();
+        Task t3 = new Task.Builder("Call Mother")
+                .priority(4)
+                .build();
+        Task t4 = new Task.Builder("Clean apartment")
+                .priority(3)
+                .build();
+        Task t5 = new Task.Builder("Service").description("Bring car to the service")
+                .priority(1)
+                .build();
+        Task t6 = new Task.Builder("Shopping").description("Gifts for christmas 🎄😨")
+                .priority(5)
+                .build();
 
         manager.add(t1);
         manager.add(t2);
@@ -29,11 +39,15 @@ public class App {
         print(manager.tasks(), "All");
 
         // set t3 completed and print inactive tasks
-         t3.setCompleted();
+        t3.setCompleted();
         print(manager.getCompletedTasks(), "Completed");
 
         // print active tasks
         print(manager.getActiveTasks(), "Active");
+
+        //print sorted tasks
+        print(manager.sortASC(), "Sorted tasks in ascending order");
+        print(manager.sortDESC(), "Sorted tasks in descending priority order");
 
         t1.setCompleted();
         t2.setCompleted();
@@ -44,8 +58,11 @@ public class App {
 
     private static void print(List<Task> tasks, String printCategory) {
         System.out.printf("---- %s tasks readout ----%n", printCategory);
-        for(Task task: tasks)
+        for (Task task : tasks)
             System.out.println(task);
         System.out.printf("---- End of %s tasks readout ----%n%n", printCategory);
+
     }
 }
+
+
