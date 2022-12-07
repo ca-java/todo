@@ -56,5 +56,10 @@ public class Task {
         return String.format("name: %s, description: %s, priority: %d", name, description, priority);
     }
 
+    public enum OrderType {
+        ASC,
+        DESC;
+    }
+
 
 }

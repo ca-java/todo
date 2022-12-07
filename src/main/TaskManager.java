@@ -18,13 +18,13 @@ public class TaskManager {
 
     private final List<Task> tasks = new ArrayList<>();
 
-    public List<Task> tasks() {
+    public List<Task> tasks(){
         ArrayList<Task> list = new ArrayList<>();
         list.addAll(tasks);
         return list;
     }
 
-    public List<Task> tasks(OrderType orderType) {
+    public List<Task> tasks(Task.OrderType orderType) {
 
         ArrayList<ArrayList<Task>> tasksPriority = new ArrayList<>(); //multidimensional list for 4 categories of priority
         tasksPriority.add(new ArrayList<Task>());
@@ -40,7 +40,7 @@ public class TaskManager {
             }
         }
 
-        if (orderType == OrderType.ASC) { // fusing categories of priority into ascending list
+        if (orderType == Task.OrderType.ASC) { // fusing categories of priority into ascending list
             for (int i = 0; i < 4; i++) {
                 list.addAll(tasksPriority.get(i));
             }
@@ -76,7 +76,7 @@ public class TaskManager {
     public List<Task> getCompletedTasks() {
         // return completed tasks
         List<Task> result = new ArrayList<>();
-        for (Task task : tasks) {
+        for (Task task: tasks) {
             if (task.isCompleted())
                 result.add(task);
         }
@@ -86,7 +86,7 @@ public class TaskManager {
     public List<Task> getActiveTasks() {
         // return incomplete tasks
         List<Task> result = new ArrayList<>();
-        for (Task task : tasks) {
+        for (Task task: tasks) {
             if (!task.isCompleted())
                 result.add(task);
         }
@@ -96,7 +96,7 @@ public class TaskManager {
     public void removeAllCompleted() {
         // remove all completed tasks
         List<Task> tasksToRemove = new ArrayList<>();
-        for (Task task : tasks) {
+        for (Task task: tasks) {
             if (task.isCompleted())
                 tasksToRemove.add(task);
         }
@@ -108,15 +108,12 @@ public class TaskManager {
         tasks.get(tasks.indexOf(task)).setCompleted();
     }
 
-    public List<Task> order() {
+    public List<Task> order(){
 
         // rikiuojame pagal prioriteta
         return null;
     }
 
-    public enum OrderType {
-        ASC,
-        DESC;
-    }
+
 
 }
