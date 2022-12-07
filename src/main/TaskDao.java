@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaskDao {
 
-    private final List<Task> tasks;
+    private final List<Task> tasks = new ArrayList<>();
 
     public TaskDao(){
 
@@ -26,7 +27,12 @@ public class TaskDao {
                 .priority(5)
                 .build();
 
-        tasks = List.of(t1, t2, t3, t4, t5, t6);
+        this.add(t1);
+        this.add(t2);
+        this.add(t3);
+        this.add(t4);
+        this.add(t5);
+        this.add(t6);
 
     }
 
