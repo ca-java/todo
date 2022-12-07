@@ -1,3 +1,4 @@
+import java.sql.Array;
 import java.util.*;
 
 
@@ -27,14 +28,14 @@ public class TaskManager {
 
     public List<Task> sortASC() {
         //Sorted tasks in ascending priority order
-        List<Task> tasks = tasks();
+        List<Task> tasks = new ArrayList<>(taskDao.fetchTasks());
         Collections.sort(tasks, new PriorityComparator());
         return tasks;
     }
 
     public List<Task> sortDESC() {
         //Sorted tasks in descending priority order
-        List<Task> tasks = tasks();
+        List<Task> tasks = new ArrayList<>(taskDao.fetchTasks());
         Collections.sort(tasks, new PriorityComparator().reversed());
         return tasks;
     }
