@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -26,35 +27,16 @@ public class TaskManager {
 
     public List<Task> tasks(Task.OrderType orderType) {
 
-        ArrayList<ArrayList<Task>> tasksPriority = new ArrayList<>(); //multidimensional list for 4 categories of priority
-        tasksPriority.add(new ArrayList<Task>());
-        tasksPriority.add(new ArrayList<Task>());
-        tasksPriority.add(new ArrayList<Task>());
-        tasksPriority.add(new ArrayList<Task>());
-
-        ArrayList<Task> list = new ArrayList<>();
-
-        for (Task currentTask : tasks) { // distributing active tasks into priority categories
-            if (!currentTask.isCompleted()) {
-                tasksPriority.get(currentTask.getPriority()).add(currentTask);
-            }
-        }
+        ArrayList<Task> list = new ArrayList<>(tasks);
 
         if (orderType == Task.OrderType.ASC) { // fusing categories of priority into ascending list
-            for (int i = 0; i < 4; i++) {
-                list.addAll(tasksPriority.get(i));
-            }
+        Collections.sort(list, new PriorityCompare());
         } else {
-            for (int i = 3; i >= 0; i--) {
-                list.addAll(tasksPriority.get(i));
-            }
+            Collections.sort(list, new PriorityCompare().reversed());
         }
         return list;
     }
 
-    public void sort() {
-        // rikiavimo logika
-    }
 
     public void add(Task task) {
         tasks.add(task);
