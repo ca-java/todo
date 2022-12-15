@@ -80,7 +80,7 @@ public class TaskManager {
     public void removeAllCompleted() {
         // remove all completed tasks
         List<Task> tasksToRemove = new ArrayList<>();
-        for (Task task : tasks()) {
+        for (Task task: tasks()) {
             if (task.isCompleted())
                 tasksToRemove.add(task);
         }
