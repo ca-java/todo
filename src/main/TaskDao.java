@@ -40,6 +40,7 @@ public class TaskDao {
         return tasks;
     }
 
+
     public void add(Task task) {
         // validate
         tasks.add(task);
@@ -57,6 +58,11 @@ public class TaskDao {
             return true;
         } else
             return false;
+    }
+
+    public boolean setCompleted (Task task) {
+        tasks.get(tasks.indexOf(task)).setCompleted();
+        return true;
     }
 
     public void removeAll(List<Task> tasks) {

@@ -31,7 +31,7 @@ public class Task {
     @Override
     public String toString() {
 
-        return String.format("name: %s, description: %s, priority: %s", name, description, priority);
+        return String.format("name: %s, description: %s, priority: %s, completion status: %b", name, description, priority, completionStatus);
     }
 
     public int getPriority() {

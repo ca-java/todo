@@ -24,7 +24,7 @@ public class App {
         print(manager.tasks(), "All");
 
         // set t3 completed and print inactive tasks
-        t3.setCompleted();
+//        manager.setCompleted(t3);
         print(manager.getCompletedTasks(), "Completed");
 
         // print active tasks
@@ -34,9 +34,9 @@ public class App {
         print(manager.sortASC(), "Sorted tasks in ascending order");
         print(manager.sortDESC(), "Sorted tasks in descending priority order");
 
-        t1.setCompleted();
-        t2.setCompleted();
-        t3.setCompleted();
+//        manager.setCompleted(t1);
+//        manager.setCompleted(t2);
+//        manager.setCompleted(t3);
         manager.removeAllCompleted();
         print(manager.tasks(), "All");
     }
