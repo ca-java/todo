@@ -1,4 +1,3 @@
-import java.sql.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -29,18 +28,16 @@ public class TaskManager {
 
     public List<Task> sortASC() {
         //Sorted tasks in ascending priority order
-        List<Task> sortedASC = taskDao.fetchTasks().stream()
+        return taskDao.fetchTasks().stream()
                 .sorted(Comparator.comparing(Task::getPriority))
                 .collect(Collectors.toList());
-        return sortedASC;
     }
 
     public List<Task> sortDESC() {
         //Sorted tasks in descending priority order
-        List<Task> sortedDESC = taskDao.fetchTasks().stream()
+        return taskDao.fetchTasks().stream()
                 .sorted(Comparator.comparing(Task::getPriority).reversed())
                 .collect(Collectors.toList());
-        return sortedDESC;
     }
 
     public void add(Task task) {
@@ -57,18 +54,16 @@ public class TaskManager {
 
     public List<Task> getCompletedTasks() {
         // return completed tasks
-        List<Task> result = taskDao.fetchTasks().stream()
+        return taskDao.fetchTasks().stream()
                 .filter(obj -> obj.isCompleted())
                 .collect(Collectors.toList());
-        return result;
     }
 
     public List<Task> getActiveTasks() {
         // return incomplete tasks
-        List<Task> result = taskDao.fetchTasks().stream()
+        return taskDao.fetchTasks().stream()
                 .filter(obj -> !obj.isCompleted())
                 .collect(Collectors.toList());
-        return result;
     }
 
     public void removeAllCompleted() {
