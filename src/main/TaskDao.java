@@ -27,12 +27,7 @@ public class TaskDao {
                 .priority(5)
                 .build();
 
-        this.add(t1);
-        this.add(t2);
-        this.add(t3);
-        this.add(t4);
-        this.add(t5);
-        this.add(t6);
+        List.of(t1, t2, t3, t4, t5, t6);
 
     }
 
