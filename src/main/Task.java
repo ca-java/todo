@@ -1,9 +1,9 @@
 public class Task {
 
-    private final int priority;
-    private final String name;
-    private final String description;
-    private boolean completionStatus;
+    private int priority;
+    private String name;
+    private String description;
+    private boolean completed;
     /*
     Užduoties (task) turimos savybės:
     1. Pavadinimas
@@ -14,6 +14,9 @@ public class Task {
     5. Data
      */
 
+    private Task(){
+    }
+
     private Task(String name, String description, int priority) {
         this.name = name;
         this.description = description;
@@ -21,11 +24,11 @@ public class Task {
     }
 
     public void setCompleted() {
-        this.completionStatus = true;
+        this.completed = true;
     }
 
-    public boolean isCompleted() {
-        return completionStatus;
+    public boolean getCompleted() {
+        return completed;
     }
 
     @Override
@@ -36,6 +39,14 @@ public class Task {
 
     public int getPriority() {
         return priority;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public static class Builder {
