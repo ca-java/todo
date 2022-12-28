@@ -4,23 +4,15 @@ public class Task {
     private String name;
     private String description;
     private boolean completed;
-    /*
-    Užduoties (task) turimos savybės:
-    1. Pavadinimas
-    2. Aprašas
-
-    3. Užduoties statusas
-    4. Prioritetas
-    5. Data
-     */
 
     private Task(){
     }
 
-    private Task(String name, String description, int priority) {
+    private Task(String name, String description, int priority, boolean completed) {
         this.name = name;
         this.description = description;
         this.priority = priority;
+        this.completed = completed;
     }
 
     public void setCompleted() {
@@ -53,13 +45,14 @@ public class Task {
         String name;
         private int priority;
         private String description;
+        private boolean status;
 
         public Builder(String name) {
             this.name = name;
         }
 
         public Task build() {
-            return new Task(name, description, priority);
+            return new Task(name, description, priority, status);
         }
 
         public Builder priority(int priority) {
@@ -70,6 +63,12 @@ public class Task {
 
         public Builder description(String description) {
             this.description = description;
+
+            return this;
+        }
+
+        public Builder completed(boolean status) {
+            this.status = status;
 
             return this;
         }

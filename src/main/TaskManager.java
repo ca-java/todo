@@ -10,18 +10,6 @@ public class TaskManager {
         this.taskDao = taskDao;
     }
 
-    /*
-    1. + Peržiūrėti visas esamas užduotis (tasks)
-    2. + Pridėti naują užduotį
-    3. + Ištrinti pasirinktą užduotį
-    4. + Redaguoti pasirinktą užduotį
-    5. + Pažymėti užduotį kaip atliktą
-    6. + Išvesti į ekraną užduotis, kurios nėra atliktos
-    7. + Išvesti į ekraną visas užduotis, kurios jau yra atliktos
-    8. + Pašalinti visas atliktas užduotis
-    9. + Rūšiuoti užduotis pagal prioriteto tvarką
-     */
-
     public List<Task> tasks() {
         return taskDao.fetchTasks();
     }
@@ -56,6 +44,7 @@ public class TaskManager {
         // return completed tasks
         return taskDao.fetchTasks().stream()
                 .filter(obj -> obj.getCompleted())
+                .filter(t -> t.getCompleted())
                 .collect(Collectors.toList());
     }
 
