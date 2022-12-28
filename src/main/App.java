@@ -1,8 +1,9 @@
+import java.io.IOException;
 import java.util.List;
 
 public class App {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         TaskManager manager = new TaskManager(new TaskDao());
 
         // add some tasks
@@ -14,31 +15,7 @@ public class App {
                 .priority(4)
                 .build();
 
-        // print all tasks
-        print(manager.tasks(), "All");
-
-        // update the task
-        manager.update(t1, t3);
-
-        // print all tasks
-        print(manager.tasks(), "All");
-
-        // set t3 completed and print inactive tasks
-        t3.setCompleted();
-        print(manager.getCompletedTasks(), "Completed");
-
-        // print active tasks
-        print(manager.getActiveTasks(), "Active");
-
-        //print sorted tasks
-        print(manager.sortASC(), "Sorted tasks in ascending order");
-        print(manager.sortDESC(), "Sorted tasks in descending priority order");
-
-        t1.setCompleted();
-        t2.setCompleted();
-        t3.setCompleted();
-        manager.removeAllCompleted();
-        print(manager.tasks(), "All");
+        manager.remove(t1);
     }
 
     private static void print(List<Task> tasks, String printCategory) {

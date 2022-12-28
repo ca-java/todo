@@ -55,14 +55,14 @@ public class TaskManager {
     public List<Task> getCompletedTasks() {
         // return completed tasks
         return taskDao.fetchTasks().stream()
-                .filter(obj -> obj.isCompleted())
+                .filter(obj -> obj.getCompleted())
                 .collect(Collectors.toList());
     }
 
     public List<Task> getActiveTasks() {
         // return incomplete tasks
         return taskDao.fetchTasks().stream()
-                .filter(obj -> !obj.isCompleted())
+                .filter(obj -> !obj.getCompleted())
                 .collect(Collectors.toList());
     }
 
@@ -70,7 +70,7 @@ public class TaskManager {
         // remove all completed tasks
         List<Task> tasksToRemove = new ArrayList<>();
         for (Task task: tasks()) {
-            if (task.isCompleted())
+            if (task.getCompleted())
                 tasksToRemove.add(task);
         }
         taskDao.removeAll(tasksToRemove);

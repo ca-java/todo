@@ -1,34 +1,24 @@
-import java.util.ArrayList;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TaskDao {
 
-    private final List<Task> tasks = new ArrayList<>();
+    private final ObjectMapper mapper = new ObjectMapper();
+    private List<Task> tasks;
 
-    public TaskDao(){
+    public TaskDao() throws IOException {
+        this.mapper.enable(SerializationFeature.INDENT_OUTPUT);
 
-        // add some tasks
-        Task t1 = new Task.Builder("Call Brother")
-                .build();
-        Task t2 = new Task.Builder("Order Pizza 🍕")
-                .build();
-        Task t3 = new Task.Builder("Call Mother")
-                .priority(4)
-                .build();
-        Task t4 = new Task.Builder("Clean apartment")
-                .priority(3)
-                .build();
-        Task t5 = new Task.Builder("Service")
-                .description("Bring car to the service")
-                .priority(1)
-                .build();
-        Task t6 = new Task.Builder("Shopping")
-                .description("Gifts for christmas 🎄😨")
-                .priority(5)
-                .build();
-
-        List.of(t1, t2, t3, t4, t5, t6);
-
+        this.tasks = mapper.readValue(
+            new File("tasks.json"),
+            new TypeReference<List<Task>>(){}
+        );
     }
 
     public List<Task> fetchTasks(){
@@ -43,6 +33,19 @@ public class TaskDao {
     public void remove(Task task) {
         // validate
         tasks.remove(task);
+        tasks = tasks.stream()
+                .filter(t -> !t.equals(task))
+                .peek(System.out::println)
+                .collect(Collectors.toList());
+        save(tasks);
+    }
+
+    private void save(List<Task> tasks) {
+        try {
+            mapper.writeValue(new File("tasks.json"), tasks);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public boolean update(Task oldTask, Task newTask) {
